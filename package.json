@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Stack Bucket - Server Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Salman-Bashar/stack-bucket-mern-server.git"
+  },
+  "author": "Salman Bashar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Salman-Bashar/stack-bucket-mern-server/issues"
+  },
+  "homepage": "https://github.com/Salman-Bashar/stack-bucket-mern-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.15",
+    "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": "v14.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
