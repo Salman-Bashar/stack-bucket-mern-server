@@ -3,9 +3,22 @@ const path = require("path")
 const express = require("express")
 const morgan = require("morgan")
 const cors = require("cors")
+const mongoose = require("mongoose")
 
 const app = express()
 const PORT = process.env.PORT || 5000
+
+mongoose
+  .connect("mongodb://localhost:27017/stack-bucket-mern", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Database Connected")
+  })
+  .catch((e) => {
+    console.log(e)
+  })
 
 app.use(cors())
 app.use(morgan("dev"))
