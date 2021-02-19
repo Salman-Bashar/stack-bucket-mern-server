@@ -1,15 +1,15 @@
 require("dotenv").config()
 const path = require("path")
 const express = require("express")
-const morgan = require("morgan")
 const cors = require("cors")
 const mongoose = require("mongoose")
+const { useMorgan } = require("./middlewares")
 
 const app = express()
 const PORT = process.env.PORT || 5000
 
 mongoose
-  .connect("mongodb://localhost:27017/stack-bucket-mern", {
+  .connect(process.env.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -20,8 +20,8 @@ mongoose
     console.log(e)
   })
 
+useMorgan(app)
 app.use(cors())
-app.use(morgan("dev"))
 app.use(express.static(path.join(__dirname, "../", "public")))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
@@ -57,3 +57,5 @@ app.use((error, req, res, next) => {
 app.listen(PORT, () => {
   console.log("Server is listening on port " + PORT)
 })
+
+console.log(process.env.NODE_ENV)
