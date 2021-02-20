@@ -23,7 +23,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.11.15",
     "morgan": "^1.10.0",
-    "rotating-file-stream": "^2.1.4"
+    "rotating-file-stream": "^2.1.4",
+    "winston": "^3.3.3"
   },
   "engines": {
     "node": "v14.15.0"

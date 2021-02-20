@@ -4,9 +4,9 @@ const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const { useMorgan } = require("./middlewares")
+const { logger } = require("./utils")
 
 const app = express()
-const PORT = process.env.PORT || 5000
 
 mongoose
   .connect(process.env.DB, {
@@ -14,10 +14,10 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("Database Connected")
+    logger.info("Database connected successfully...")
   })
   .catch((e) => {
-    console.log(e)
+    logger.error(e.message)
   })
 
 useMorgan(app)
@@ -54,8 +54,6 @@ app.use((error, req, res, next) => {
   })
 })
 
-app.listen(PORT, () => {
-  console.log("Server is listening on port " + PORT)
+app.listen(process.env.PORT, () => {
+  logger.info(`Server is running on port ${process.env.PORT}`)
 })
-
-console.log(process.env.NODE_ENV)
